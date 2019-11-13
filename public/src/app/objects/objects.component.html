@@ -1,0 +1,16 @@
+<div class="container">
+
+    <button routerLink="/create" class="card-link">Create</button>
+
+    <div *ngFor="let object of objects; index as i" class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{object.name}}</h5>
+            
+            <button routerLink="/details/{{object._id}}" class="card-link">Details</button>
+            <button routerLink="/edit/{{object._id}}" class="card-link">Edit</button>
+            <button (click)="deleteObject(object._id)" class="card-link">Delete</button>
+        </div>
+    </div>
+
+
+</div>

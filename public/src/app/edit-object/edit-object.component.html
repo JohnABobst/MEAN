@@ -1,0 +1,14 @@
+<div class="container">
+    <button class="btn btn-primary" [routerLink]="['/objects']">Objects</button>
+{{object}}
+    <form (submit)="editObject()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" [(ngModel)]="object.name" class="form-control" aria-describedby="name"
+                placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" [routerLink]="['/objects']" class="btn btn-primary">Cancel</button>
+    </form>
+
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+    <button class="btn btn-primary" [routerLink]="['/objects']">Home</button>
+    
+    <form (submit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" [(ngModel)]="newObject.name" class="form-control" aria-describedby="name"
+                placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" [routerLink]="['/objects']" class="btn btn-primary">Cancel</button>
+    </form>
+
+</div>
