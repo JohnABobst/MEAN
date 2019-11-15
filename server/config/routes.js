@@ -16,6 +16,9 @@ module.exports = function(app) {
     app.put("/api/objects/:id", (request,response) =>{
         objects.put(request,response)
     })
+    app.post("/api/review/:id", (request,response) => {
+        objects.review(request,response)
+    })
     app.all("*", (request, response, next) => {
         response.sendFile(path.resolve("./public/dist/public/index.html"))
     }); 

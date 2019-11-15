@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 
 const Object = mongoose.model("Object")
+
 module.exports = {
     objects: function (request,response) {
         Object.find()
@@ -10,9 +11,10 @@ module.exports = {
     detail: function (request,response) {
         Object.findOne({_id:request.params.id})
             .then(data=> response.json(data))
-            .catch(data=> response.json(error))
+            .catch(error=> response.json(error))
     },
     create: function (request,response) {
+       
         Object.create(request.body)
             .then(data=> response.json(data))
             .catch(error => response.json(error))
@@ -33,6 +35,25 @@ module.exports = {
     delete: function(request,response){
         Object.deleteOne({_id:request.params.id})
             .then(data=> response.json(data))
+            .catch(error => response.json(error))
+    },
+    review: function(request,response){
+       
+        Review.create(request.body)
+            .then(data=> {
+                Object.findOneAndUpdate(
+                    {_id:request.params.id}, 
+                    {$push: {reviews:data}}, 
+                    {new:true}, 
+                    function(error,data){
+                        if(error){
+                            return response.json(error)
+                        }
+                        else{
+                            return response.json(data)
+                        }
+                })
+            })
             .catch(error => response.json(error))
     }
 }

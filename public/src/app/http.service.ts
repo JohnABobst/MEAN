@@ -21,4 +21,7 @@ export class HttpService {
   createObject(data){
     return this._http.post('/api/objects', data)
   }
+  createReview(data,id){
+    return this._http.post('/api/review/'+id,data)
+  }
 }

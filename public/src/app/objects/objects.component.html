@@ -1,15 +1,38 @@
 <div class="container">
-
-    <button routerLink="/create" class="card-link">Create</button>
-
-    <div *ngFor="let object of objects; index as i" class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{object.name}}</h5>
+    <p class="lead">Commerce Manager</p>
+    <div class="row border">
+        <div class="col">            
+            <button class="float-right btn btn-primary" [routerLink]="['/create']">Add New Product</button>
+            <div class="container">
+                <table class="table border">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let object of objects; index as i">
+                            <th scope="row">{{object._id}}</th>
+                            <td>{{object.name}}</td>
+                            <td>{{object.quantity}}</td>
+                            <td>{{object.price}}</td>
+                            <td>
+                                <button [routerLink]="['/edit', object._id]" class=" btn btn-primary">Edit</button>
+                                <button [routerLink]="['/products', object._id]" class="btn btn-primary">Details</button>
+                
+                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
-            <button routerLink="/details/{{object._id}}" class="card-link">Details</button>
-            <button routerLink="/edit/{{object._id}}" class="card-link">Edit</button>
-            <button (click)="deleteObject(object._id)" class="card-link">Delete</button>
-        </div>
+        </div>      
+
     </div>
 
 

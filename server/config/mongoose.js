@@ -3,7 +3,7 @@ const fs = require('fs');
 const mongoose = require('mongoose')
 var models_path = path.join(__dirname, './../models');
 
-mongoose.connect('mongodb://localhost/objects')
+mongoose.connect('mongodb://localhost/products')
 
 fs.readdirSync(models_path).forEach(function (file) {
     if (file.indexOf('.js') >= 0) {

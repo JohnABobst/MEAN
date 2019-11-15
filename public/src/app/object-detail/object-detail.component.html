@@ -1,4 +1,24 @@
 <div class="container">
-    <button class = btn btn-primary [routerLink]="['/objects']"> Home</button>
-    <p class="lead">{{object.name}}</p>
+    
+    <button [routerLink]="['/products']" class="btn btn-primary">Return To Products</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{object.name}}</th>
+            <td>{{object.quantity}}</td>
+            <td>{{object.price}}</td>
+        </tr>
+    </tbody>
+</table>
+<button [routerLink]="['/products']" class="btn btn-primary">Back</button>
+<button [disabled]="object.quantity !=0"(click)="deleteProduct(object._id)" class="btn btn-primary">Delete</button>
+
 </div>
+

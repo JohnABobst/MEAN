@@ -4,12 +4,14 @@ import { ObjectDetailComponent } from './object-detail/object-detail.component';
 import { EditObjectComponent } from './edit-object/edit-object.component';
 import { CreateObjectComponent } from './create-object/create-object.component';
 import { ObjectsComponent } from './objects/objects.component';
+
 const routes: Routes = [
-  { path: '', redirectTo: 'objects', pathMatch: 'full'},
-  { path: 'objects', component: ObjectsComponent},
-  { path: 'details/:id', component: ObjectDetailComponent },
+  { path: '', redirectTo: 'products', pathMatch: 'full'},
+  { path: 'products', component: ObjectsComponent}, 
   { path: 'edit/:id', component: EditObjectComponent },
   { path: 'create', component: CreateObjectComponent },
+  { path: 'products/:id', component: ObjectDetailComponent },
+
   
 ];
 @NgModule({

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+
 @Component({
   selector: 'app-objects',
   templateUrl: './objects.component.html',
@@ -7,7 +8,8 @@ import { HttpService } from '../http.service';
 })
 export class ObjectsComponent implements OnInit {
   objects: any;
-
+  selectedObject: any;
+  show: any;
   constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
@@ -19,6 +21,10 @@ export class ObjectsComponent implements OnInit {
       console.log(data)
       this.objects = data
     })
+  }
+  selectObject(index){
+    this.show = 'show'
+    this.selectedObject = this.objects[index]
   }
   deleteObject(id){
     console.log("Delete happened?")

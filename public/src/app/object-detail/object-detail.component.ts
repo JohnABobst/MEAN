@@ -16,15 +16,27 @@ export class ObjectDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.object = {name:"", quantity: 0, price: 0};
     this._route.params.subscribe((params: Params) => {
       this.getObject(params['id'])
+      
     })
-    this.object = {name: ""}
+    
   }
   getObject(id) {
     let observable = this._httpService.getDetails(id)
     observable.subscribe((data:any)=>{
       this.object = data
+      console.log(this.object)
+    })
+  }
+  deleteProduct(id){
+    console.log("deleting")
+    let observable = this._httpService.destroyObject(id)
+    observable.subscribe(()=>{
+      console.log("routing")
+      this._router.navigate(["/products"]);
+     
     })
   }
 
